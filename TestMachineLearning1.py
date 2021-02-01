@@ -48,10 +48,6 @@ algorithm_RF.fit(input_data, output_data)
 algorithm_KN.fit(input_data, output_data)
 
 # テストデータ(予測したいデータ))
-# test_data = [
-#     [0.96521, 0.67590, 0.18106],
-#     [0.73840, 0.34131, 0.35770],
-#     [0.35872, 0.78936, 0.90241]]
 test_data = []
 
 f = open('data/circle_test.csv', 'r')
