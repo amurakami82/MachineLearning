@@ -1,7 +1,5 @@
 # TestMachineLearning1を関数化
 
-from sklearn.metrics import accuracy_score
-
 # アルゴリズムimport
 from sklearn.svm       import LinearSVC
 from sklearn.neighbors import KNeighborsClassifier
