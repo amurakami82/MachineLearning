@@ -1,3 +1,6 @@
+# 半径1の円球を境界として、内側（境界含む）を1、外側を2としてxyz座標データを作成
+# 3アルゴリズムを用いて、テストデータを推論
+
 from sklearn.metrics import accuracy_score
 
 # アルゴリズムimport
