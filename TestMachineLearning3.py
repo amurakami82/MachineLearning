@@ -5,7 +5,7 @@ from sklearn.cluster import KMeans
 import FIleImEx
 
 # インプットデータ取得
-importData = FIleImEx.import_file('data/two-plates.stl')
+importData = FIleImEx.import_file('data/many-plates.stl')
 vertexList = importData[0]  # メッシュ座標情報
 facetList = importData[1]  # 法線情報
 
@@ -28,6 +28,30 @@ print(predictResult2)
 predictResult3 = clustering.fit_predict(facetList)
 print(predictResult3)
 
+# 重心座標を使用
+centerOfMassList = []
+for i in range(len(vertexList)):
+    centerOfMass = [(vertexList[i][0] + vertexList[i][3] + vertexList[i][6])/3,
+                    (vertexList[i][1] + vertexList[i][4] + vertexList[i][7])/3,
+                    (vertexList[i][2] + vertexList[i][5] + vertexList[i][8])/3]
+    centerOfMassList.append(centerOfMass)
+# print(centerOfMassList)
+predictResult4 = clustering.fit_predict(centerOfMassList)
+print(predictResult4)
+
 # アウトプットデータ出力
-FIleImEx.export_file(vertexList, facetList, 'data/two-plates_result.stl')
+vertexList_0 = []
+vertexList_1 = []
+facetList_0 = []
+facetList_1 = []
+for counter in range(len(predictResult4)):
+    if predictResult4[counter] == 0:
+        vertexList_0.append(vertexList[counter])
+        facetList_0.append(facetList[counter])
+    elif predictResult4[counter] == 1:
+        vertexList_1.append(vertexList[counter])
+        facetList_1.append(facetList[counter])
+
+FIleImEx.export_file(vertexList_0, facetList_0, 'data/many-plates_result_0.stl')
+FIleImEx.export_file(vertexList_1, facetList_1, 'data/many-plates_result_1.stl')
 
