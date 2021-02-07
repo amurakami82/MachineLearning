@@ -1,5 +1,4 @@
 def import_file(fileName):
-    # f = open('data/cube-ascii.stl', 'r')
     f = open(fileName, 'r')
 
     lCount = 0
@@ -36,13 +35,11 @@ def import_file(fileName):
 
 
 def export_file(vertexList, facetList, fileName):
-    # g = open('data/cube-ascii_after.stl', 'w')
     g = open(fileName, 'w')
     g.write('solid ' + fileName + '\n')
 
-    print('len(vertexList):'+str(len(vertexList)))
+    # print('len(vertexList):'+str(len(vertexList)))
     for counter in range(len(vertexList)):
-        # g.write(facetList[counter])
         g.write('  facet normal  ')
         for xyzCounter in range(3):
             g.write(str('{:.6e}'.format(facetList[counter][xyzCounter])) + '  ')
@@ -57,7 +54,3 @@ def export_file(vertexList, facetList, fileName):
         g.write('  endfacet\n')
     g.write('endsolid\n')
     g.close()
-
-
-
-
